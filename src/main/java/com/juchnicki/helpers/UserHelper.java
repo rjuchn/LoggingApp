@@ -18,7 +18,7 @@ public class UserHelper {
             Class.forName(Constraints.driverClassName);
             Connection conn = DriverManager.getConnection(Constraints.dbUrl, Constraints.username, Constraints.password);
 
-            authenticateUserStatement = conn.prepareStatement("select * from users where user_name = ? and user_password = ?");
+            authenticateUserStatement = conn.prepareStatement("select * from SYSTEM.users where user_name = ? and user_password = ?");
         } catch (Exception e){
             System.out.println(e.getClass().getName() + ":" + e.getMessage());
         }
@@ -32,7 +32,9 @@ public class UserHelper {
             ResultSet rs = authenticateUserStatement.executeQuery();
 
             if(rs.next()){
-                user = new User(rs.getInt("user_id"), rs.getString("user_name"), rs.getString("user_password"));
+                user = new User(rs.getInt("user_id"),
+                        rs.getString("user_name"),
+                        rs.getString("user_password"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

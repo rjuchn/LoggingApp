@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1>Welcome, ${user.username}!</h1>
+<h1>Welcome, <%=session.getAttribute("user.userName") %></h1>
 <p>You have successfully logged in, congratulations.<br>
 Click <a href="Login?logout=true">here</a> to log back out.
 </p>

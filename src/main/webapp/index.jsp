@@ -22,7 +22,14 @@ pageEncoding="ISO-8859-1"%>
     <input type="text" class="form-control" name="username" placeholder="Username" required><br>
     <input type="password" class="form-control" name="password" placeholder="Password" required> <br>
     <input type="submit" class="btn btn-primary" value="Login">
-    ${errormessages}
+
+    <%
+    String errorMsg = (String) request.getAttribute("errorMessage");
+    if(errorMsg != null){
+    out.println(errorMsg);
+    }
+    //out.println("");
+    %>
 </form>
 
 
